@@ -46,9 +46,10 @@ void Print2DArray(int[,] array)
     }
 }
 
-void PrintArray(int[] array)
+void PrintArray(double[] array)
 {
 
+    System.Console.WriteLine("Среднее арифметическое каждого столбца: ");
 
     for (int j = 0; j < array.Length; j++)
     {
@@ -85,13 +86,17 @@ int[] sumOfColumns(int[,] myArray)
     return columnSums;
 }
 
-int[] ArithmeticMeanOfColumns(int[] array)
+double[] ArithmeticMeanOfColumns(int[] array, int [,] args)
 {
-    int[] ArithmeticMeanOfColumn = new int[array.Length];
+    double[] ArithmeticMeanOfColumn = new double[array.Length];
+
+    double y = (double) args.GetLength(0);
 
     for (int i = 0; i < array.Length; i++)
     {
-        ArithmeticMeanOfColumn[i] = array[i] / array.Length;
+        double x = (double) array[i];
+
+        ArithmeticMeanOfColumn[i] = Math.Round((x / y),2);
     }
     return ArithmeticMeanOfColumn;
 }
@@ -103,6 +108,6 @@ Print2DArray(myArray);
 
 System.Console.WriteLine();
 
-int[] ArithmeticMean = ArithmeticMeanOfColumns(myArgs);
+double[] ArithmeticMean = ArithmeticMeanOfColumns(myArgs,myArray);
 
 PrintArray(ArithmeticMean);
